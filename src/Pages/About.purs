@@ -7,7 +7,7 @@ import React.Basic.Hooks as React
 
 mkAbout :: Page.Component Unit
 mkAbout = do
-  Page.component "About" \_ _ -> pure render
+  Page.component "About" \_ -> pure render
   where
   render =
     React.fragment

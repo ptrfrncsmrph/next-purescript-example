@@ -1,10 +1,12 @@
 module Pages.Home (mkHome, getServerSideProps) where
 
 import Prelude
+
 import Affjax as AX
 import Affjax.ResponseFormat as ResponseFormat
 import Components.Page as Page
 import Config as Config
+import Control.Monad.Reader as Reader
 import Control.Promise (Promise, fromAff)
 import Data.Either (Either(..), either)
 import Data.HTTP.Method (Method(..))
@@ -22,12 +24,13 @@ type Props =
 
 mkHome :: Page.Component Props
 mkHome = do
-  Page.component "Home" \env props -> React.do
+  env <- Reader.ask
+  Page.component "Home" \props -> React.do
     settings <- React.useContext env.settings
     React.useEffect settings do
       Console.log $ fromMaybe "No settings" settings
       mempty
-    pure $ render props
+    pure (render props)
   where
   render props =
     React.fragment

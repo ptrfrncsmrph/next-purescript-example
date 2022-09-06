@@ -8,7 +8,7 @@ import React.Basic.Hooks as React
 
 mkProfile :: Page.Component Unit
 mkProfile = do
-  Page.component "Profile" \_ _ -> pure render
+  Page.component "Profile" \_ -> pure render
   where
   render =
     React.fragment

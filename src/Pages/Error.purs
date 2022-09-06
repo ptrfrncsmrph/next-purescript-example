@@ -8,7 +8,7 @@ import React.Basic.Hooks as React
 
 mkError :: StatusCode -> Page.Component Unit
 mkError statusCode = do
-  Page.component "Error" \_ _ -> pure render
+  Page.component "Error" \_ -> pure render
   where
   render =
     React.fragment
